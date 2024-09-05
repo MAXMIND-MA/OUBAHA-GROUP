@@ -24,4 +24,5 @@ jobs:
           - .ENV
           - .DS_Store
           - error_log
+          - .gitignore
          
