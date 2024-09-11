@@ -1,0 +1,27 @@
+on:
+    push:
+      branches:
+        - main
+name: 🚀 Deploy OUBAHA-GROUPE.MAXMIND.MA ON PUSH 
+jobs:
+    web-deploy:
+      name: 🎉 Deploy OUBAHA GROUPE LANDING PAGE
+      runs-on: ubuntu-latest
+      steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v2
+      
+      - name: 📂 Sync files TO SERVER
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          server: ${{ vars.HOST }}
+          username: ${{ vars.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASS }}
+          exclude: .git*
+            - .git*/**
+            - .DS_Store
+            - README.md
+            - error_log          
+            - database.sql          
+            - node_modules/          
+  
